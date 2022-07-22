@@ -1,7 +1,5 @@
 package android;
 
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.Assert;
@@ -53,14 +51,16 @@ public class Intro {
         desiredCapabilities.setCapability(MobileCapabilityType.APP, apkFile.getAbsolutePath());
 
         URL appiumServerUrl = new URL("http://localhost:4723/wd/hub");
-        AppiumDriver driver = new AndroidDriver(appiumServerUrl, desiredCapabilities);
+        AndroidDriver driver = new AndroidDriver(appiumServerUrl, desiredCapabilities);
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 
 
         // click on Views
         WebElement viewButton = driver.findElement(By.xpath("//android.widget.TextView[@text='Views']"));
         viewButton.click();
+
 
         // click on Buttons
         WebElement buttonButton = driver.findElement(By.xpath("//*[@text='Buttons']"));
@@ -75,10 +75,10 @@ public class Intro {
         // validate its text
         Assert.assertEquals("NORMAL", normalButton.getText());
 
-        WebElement smallButton = driver.findElement(AppiumBy.accessibilityId("Small"));
+//        WebElement smallButton = driver.findElement(AppiumBy.accessibilityId("Small"));
 
-        Assert.assertTrue(smallButton.isDisplayed());
-        Assert.assertEquals("SMALL", smallButton.getText());
+//        Assert.assertTrue(smallButton.isDisplayed());
+//        Assert.assertEquals("SMALL", smallButton.getText());
 
 
 
